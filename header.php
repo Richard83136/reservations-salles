@@ -16,7 +16,7 @@
       
     </body>
     </html>
-    <div class="container-fluid">
+    
     <nav class="navbar navbar-expand-lg navbar-light bg-body-tertiary">
   
     <a class="navbar-brand" href="#">Reservation de salles</a>
@@ -34,11 +34,9 @@
         <li class="nav-item">
           <a class="nav-link text-dark" href="planning.php"> Planning</a>
         </li>
+        
         <li class="nav-item">
-          <a class="nav-link text-dark" aria-current="page" href="reservation.php">reservation</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link text-dark" aria-current="page" href="reservation-form.php">formulaire de reservation</a>
+          <a class="nav-link text-dark" aria-current="page" href="reservation-form.php">Reservation</a>
         </li>
         <li class="nav-item">
           <a class="nav-link text-dark" href="logout.php">Déconnexion</a>
@@ -55,13 +53,13 @@
         </ul>
     </div>
   </nav>
-  </div>
+  
 
   
        <?php
 
          } else {?>
-     <div class="container-fluid">
+     
          <nav class="navbar navbar-expand-lg navbar-light bg-body-tertiary">
   
     <a class="navbar-brand" href="#">Reservation de salles</a>
@@ -94,5 +92,12 @@
         <?php
   }
   ?>
-  <div style="height:100vh;"></div>
-</div>
+  
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js" integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js" integrity="sha384-mQ93GR66B00ZXjt0YO5KlohRA5SY2XofN4zfuZxLkoj1gXtW8ANNCe9d5Y3eG5eD" crossorigin="anonymous"></script>
+</body>
+
+</html> 

@@ -98,20 +98,20 @@ if ( isset($_POST['submit']))
             <form class="w-50"  action="connexion.php" method="post">
                         <p class="text-center"> <?php  echo @$mauvaisidentifiants;  ?> </p>
                         <div class="form-group">
-                            <label for="login">Login</label>
-                            <input  type="login" name="login" required class="form-control" id="login" aria-describedby="emailHelp">
+                            <label for="login"><b>Login</b></label>
+                            <input  type="login" name="login" required class="form-control" style="border:1px solid black;" id="login" aria-describedby="emailHelp">
                         </div>
                         <div class="form-group">
-                            <label for="exampleInputPassword1">Password</label>
-                            <input type="password" name="password" required class="form-control" id="exampleInputPassword1">
+                            <label for="exampleInputPassword1"><b>Password</b></label>
+                            <input type="password" name="password" required class="form-control" style="border:1px solid black;" id="exampleInputPassword1">
                         </div>
                         <div class="row">
                         <div class="d-grid gap-2 col-6 mx-auto">
-                        <button type="submit" name="submit" class="btn btn-primary mt-3 ">Connexion</button></div>
+                        <button type="submit" name="submit" class="btn btn-info mt-3 ">Connexion</button></div>
 							<br>
                         <div class="ins">
 							
-                            <p class="alert alert-info alert-dismissible fade show mt-3 rounded">Vous n'êtes pas encore inscrit ?</p>
+                            <p class="alert alert-info alert-dismissible fade show mt-3 rounded" style="border:1px solid black;">Vous n'êtes pas encore inscrit ?</p>
                             <div class="d-grid gap-2 col-6 mx-auto">	
                         <a href="inscription.php" class="btn btn-primary mb-3">Inscription</a></div>
             </form>

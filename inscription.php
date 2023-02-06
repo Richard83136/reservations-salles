@@ -20,7 +20,7 @@ include_once("dbconnect.php");
     <header>
     <nav class="navbar navbar-expand-lg bg-light">
         <div class="container-fluid">
-          <a class="navbar-brand" href="#">Module-connexion</a>
+          <a class="navbar-brand" href="#">Reservation de salles</a>
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
           </button>
@@ -40,7 +40,7 @@ include_once("dbconnect.php");
 </header>
 <body>
     <div class="parallax_inscription">  
-    <h1 class="text-center pt-2">Bienvenue sur la page d'inscription </h1>   
+    <h1 class="text-center" style="padding-top:10%;">Inscription </h1>   
             
             
             
@@ -50,18 +50,18 @@ include_once("dbconnect.php");
                         <form class="w-50" action="inscription.php" method="post">
                             <div class="form-group form-control-lg">
                                 <label for="login">Choisissez votre Login:</label>
-                                <input type="login" name="login" class="form-control form-control-lg" id="login">
+                                <input type="login" name="login" class="form-control form-control-lg" style="border:1px solid black;" id="login">
                             </div>
                             <div class="form-group form-control-lg">
                                 <label for="password">Password:</label>
-                                <input type="password" name="password" class="form-control form-control-lg" id="password">
+                                <input type="password" name="password" class="form-control form-control-lg" style="border:1px solid black;" id="password">
                             </div>
                             <div class="form-group form-control-lg">
                                 <label for="confirm_password">Confirmez le Password:</label>
-                                <input type="password" name="confirm_password" class="form-control form-control-lg" id="confirm_password">
+                                <input type="password" name="confirm_password" class="form-control form-control-lg" style="border:1px solid black;" id="confirm_password">
                             </div>
                             <div class="d-grid gap-2 col-6 mx-auto">
-                            <button type="submit" class="btn btn-primary">Submit</button>
+                            <button type="submit" class="btn btn-primary mt-5">S'enregistrer</button>
     </div>
                         </form>
                     </div>

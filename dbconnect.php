@@ -8,7 +8,15 @@ session_start();
     catch (Exception $e) {
         die('Erreur : ' . $e->getMessage());
 }
-        
+$servername = "localhost";
+$username = "root";
+$password = "";
+$dbname = "reservationsalles";
+$tablename = "reservation";
+
+// translate these
+$months = array('Janvier', 'Fevrier', 'Mars', 'Avril', 'Mai', 'Juin', 'Juillet', 'Aout', 'Septembre', 'Octobre', 'Novembre', 'Decembre');
+$headings = array('Dimanche','Lundi','Mardi','Mercredi','Jeudi','Vendredi','Samedi');   
 ?>
 
 

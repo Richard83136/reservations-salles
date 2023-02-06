@@ -1,7 +1,7 @@
-.parallax_accueil{
-    background-image:linear-gradient(rgba(255, 255, 255, 0.274),rgba(255, 255, 255, 0.295)), url('images/connexion_fd.jpg');
+/* .parallax_accueil{
+     background-image:linear-gradient(rgba(255, 255, 255, 0.274),rgba(255, 255, 255, 0.295)), url('images/connexion_fd.jpg'); 
     width:100%;
-    height:5000px;
+    height:300px;
     background-repeat: no-repeat;
     background-position: center;
     background-size: cover;
@@ -9,13 +9,13 @@
     margin-top: -10px;
     
     
-}
+} */
 .parallax_inscription{
-    background-image:linear-gradient(rgba(255, 255, 255, 0.274),rgba(255, 255, 255, 0.295)), url('images/inscription_fd.png');
+    background-image:linear-gradient(rgba(255, 255, 255, 0.274),rgba(255, 255, 255, 0.295)), url('images/salleinspirational.jpg');
     width:100%;
     height:700px;
     background-repeat: no-repeat;
-    
+    background-position: center;
     background-size: cover;
     background-attachment: scroll;
     margin-top: -10px;
@@ -23,19 +23,34 @@
     
 }
 .parallax_connexion{
-    background-image:linear-gradient(rgba(255, 255, 255, 0.274),rgba(255, 255, 255, 0.295)), url('images/connexion_fd.jpg');
+    background-image:linear-gradient(rgba(255, 255, 255, 0.23),rgba(255, 255, 255, 0.219)), url('images/sallebrick.jpg');
     width:100%;
     height:700px;
     background-repeat: no-repeat;
-    
+    background-position: center;
     background-size: cover;
     background-attachment: scroll;
     margin-top: -10px;
     
     
 }
+.calendrier{
+    background-image:linear-gradient(rgba(255, 255, 255, 0.372),rgba(255, 255, 255, 0.219)), url('images/salle3.jpg');
+    width:100%;
+    height:700px;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    background-attachment: scroll;
+    margin-top: -10px;
+    
+    
+}
+.tableau_resa{
+    background-image:linear-gradient(rgba(255, 255, 255, 0.56),rgba(255, 255, 255, 0.219)); 
+}
 .parallax_profil{
-    background-image:linear-gradient(rgba(255, 255, 255, 0.446),rgba(255, 255, 255, 0.463)), url('images/profil.jpg');
+    background-image:linear-gradient(rgba(255, 255, 255, 0.23),rgba(255, 255, 255, 0.299)), url('images/profil.jpg');
     width:100%;
     height:700px;
     background-repeat: no-repeat;

@@ -27,24 +27,24 @@ include_once("dbconnect.php");
 <body>
     <div class="parallax_profil">
         <h2 class="text-center pt-5">Modifiez votre profil ici !!</h2>
-        <div class="container " id="page_centrale_connexion">
+        <div class="container "  id="page_centrale_connexion">
             <div class="row h-100  ">
                 <div class="col-12 h-100 d-flex justify-content-center align-items-center">
                     <form class="w-50" action="profil.php" method="post">
-                        <div class="form-group">
+                        <div class="form-group " >
                             <label for="login">Modifier votre pseudo</label>
-                            <input type="login" name="login" class="form-control form-control-lg" id="login" value="<?php echo $donnees['login'];   ?>">
+                            <input type="login" name="login" class="form-control form-control-lg" style="border:1px solid black;"id="login" value="<?php echo $donnees['login'];   ?>">
                         </div>
                        <div class="form-group">
                             <label for="password">Modifier votre password</label>
-                            <input type="password" name="password" class="form-control form-control-lg" id="password">
+                            <input type="password" name="password" class="form-control form-control-lg" style="border:1px solid black;"id="password">
                         </div>
                         <div class="form-group">
                             <label for="confirm_password">Confirmer la modification du password</label>
-                            <input type="password" name="confirm_password" class="form-control form-control-lg" id="confirm_password">
+                            <input type="password" name="confirm_password" style="border:1px solid black;" class="form-control form-control-lg" id="confirm_password">
                         </div><br>
                         <div class="d-grid gap-2 col-6 mx-auto">
-                        <button type="submit" name="submit" class="btn btn-primary d-block">Submit</button></div>
+                        <button type="submit" name="submit" class="btn btn-success d-block">Modifier</button></div>
                     </form>
                 </div>
             </div>
