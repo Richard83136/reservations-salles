@@ -1,5 +1,5 @@
 <?php 
-session_start();
+
 
 
 include_once("dbconnect.php");
@@ -15,15 +15,13 @@ if ( isset($_POST['submit']))
     $result = $requete->fetch();
     if ( $result == true)
     {
-            if  ( $_POST['password'] === 'admin' AND $_POST['login'] === 'admin') //vérification si la connection concerne le compte admin
+            if  ( $_POST['password'] AND $_POST['login']) //vérification si la connection concerne le compte admin
                 { session_start();// ouverture de la session admin
                     $req = $bdd->prepare('SELECT * FROM utilisateurs  WHERE login  = :login');
                     $req->execute(array('login' => $_POST['login']));
                     $_SESSION = $req->fetch();
                     $_SESSION['login'] = $_POST['login'];
-                    $_SESSION['nom'] = $result['nom'];
-                    $_SESSION['prenom'] = $result['prenom'];
-                    header('Location: site.php');//redirection
+                    header('Location: index.php');//redirection
                 }
             else 
                 {
@@ -34,9 +32,8 @@ if ( isset($_POST['submit']))
                                 $req->execute(array('login' => $_POST['login']));
                                 $_SESSION = $req->fetch();
                                 $_SESSION['login'] = $_POST['login'];
-                                $_SESSION['nom'] = $result['nom'];
-                                $_SESSION['prenom'] = $result['prenom'];
-                                header('Location: site.php');//redirection
+                                
+                                header('Location: connexion.php');//redirection
                             }
                         else 
                         {
@@ -72,7 +69,7 @@ if ( isset($_POST['submit']))
     <header>
     <nav class="navbar navbar-expand-lg bg-light">
         <div class="container-fluid">
-          <a class="navbar-brand" href="#">Module-connexion</a>
+          <a class="navbar-brand" href="#">Reservation de salles</a>
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
           </button>

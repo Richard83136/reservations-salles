@@ -2,8 +2,6 @@
 include_once("dbconnect.php");
 
         @$login = htmlspecialchars($_POST['login']);
-        @$nom = htmlspecialchars($_POST['nom']);
-        @$prenom = htmlspecialchars($_POST['prenom']);
         @$password = password_hash($_POST['password'], PASSWORD_BCRYPT);
         if ($_POST == NULL) // génération d'un formulaire de base
     { 
@@ -55,14 +53,6 @@ include_once("dbconnect.php");
                                 <input type="login" name="login" class="form-control form-control-lg" id="login">
                             </div>
                             <div class="form-group form-control-lg">
-                                <label for="nom">Votre nom:</label>
-                                <input type="text" name="nom" class="form-control form-control-lg" id="nom">
-                            </div>
-                            <div class="form-group form-control-lg">
-                                <label for="prenom">Votre prénom:</label>
-                                <input type="text" name="prenom" class="form-control form-control-lg" id="prenom">
-                            </div>
-                            <div class="form-group form-control-lg">
                                 <label for="password">Password:</label>
                                 <input type="password" name="password" class="form-control form-control-lg" id="password">
                             </div>
@@ -96,14 +86,6 @@ include_once("dbconnect.php");
                                     <input type="login" name="login" class="form-control form-control-lg" id="login" value="<?php if (isset($login)) {echo $login;} ?>">
                                 </div>
                                 <div class="form-group form-control-lg">
-                                    <label for="nom">Votre nom:</label>
-                                    <input type="text" name="nom" class="form-control form-control-lg" id="nom" value="<?php if (isset($nom)) {echo $nom;} ?>">
-                                </div>
-                                <div class="form-group form-control-lg">
-                                    <label for="prenom">Votre prénom:</label>
-                                    <input type="text" name="prenom" class="form-control form-control-lg" id="prenom" value="<?php if (isset($prenom)) {echo $prenom;} ?>">
-                                </div>
-                                <div class="form-group form-control-lg">
                                     <label for="password">Password:</label>
                                     <input type="password" name="password" class="form-control form-control-lg" id="password">
                                 </div>
@@ -119,17 +101,15 @@ include_once("dbconnect.php");
                 </div>
                 <?php
             } else {
-                if ($_POST['login'] != NULL and  $_POST['nom'] != NULL and  $_POST['prenom'] != NULL and  $_POST['password'] != NULL and  $_POST['confirm_password'] != NULL)
+                if ($_POST['login'] != NULL and  $_POST['password'] != NULL and  $_POST['confirm_password'] != NULL)
                 // si tous les champs sont remplis, on peu passer à la suite
                 {
                     if (@$_POST['confirm_password'] === @$_POST['password'])
                     // on verifie d'abord que les mdp sont bien identiques
                     {
-                        $req = $bdd->prepare('INSERT INTO utilisateurs(login, nom, prenom, password) VALUES(:login, :nom, :prenom, :password)');
+                        $req = $bdd->prepare('INSERT INTO utilisateurs(login, password) VALUES(:login, :password)');
                         $req->execute(array(
                             'login' => $login,
-                            'nom' => $nom,
-                            'prenom' => $prenom,
                             'password' => $password,));
                         header('Location: connexion.php'); //redirection
                     } else
@@ -142,14 +122,6 @@ include_once("dbconnect.php");
                                         <div class="form-group form-control-lg">
                                             <label for="login">Choisissez votre Login:</label>
                                             <input type="login" name="login" class="form-control form-control-lg" id="login" value="<?php if (isset($login)) {echo $login;} ?>">
-                                        </div>
-                                        <div class="form-group form-control-lg">
-                                            <label for="nom">Votre nom:</label>
-                                            <input type="text" name="nom" class="form-control form-control-lg" id="nom" value="<?php if (isset($nom)) {echo $nom;} ?>">
-                                        </div>
-                                        <div class="form-group form-control-lg">
-                                            <label for="prenom">Votre prénom:</label>
-                                            <input type="text" name="prenom" class="form-control form-control-lg" id="prenom" value="<?php if (isset($prenom)) {echo $prenom;} ?>">
                                         </div>
                                         <div class="form-group form-control-lg">
                                             <label for="password">Password:</label>
@@ -177,14 +149,6 @@ include_once("dbconnect.php");
                                     <div class="form-group form-control-lg">
                                         <label for="login">Choisissez votre Login:</label>
                                         <input type="login" name="login" class="form-control form-control-lg" id="login" value="<?php if (isset($login)) echo $login;} ?>">
-                                    </div>
-                                    <div class="form-group form-control-lg">
-                                        <label for="nom">Votre nom:</label>
-                                        <input type="text" name="nom" class="form-control form-control-lg" id="nom" value="<?php if (isset($nom)) {echo $nom;} ?>">
-                                    </div>
-                                    <div class="form-group form-control-lg">
-                                        <label for="prenom">Votre prénom:</label>
-                                        <input type="text" name="prenom" class="form-control form-control-lg" id="prenom" value="<?php if (isset($prenom)) {echo $prenom;} ?>">
                                     </div>
                                     <div class="form-group form-control-lg">
                                         <label for="password">Password:</label>

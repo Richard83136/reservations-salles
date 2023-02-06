@@ -1,9 +1,8 @@
 <?php
-session_start();
+include('header.php');
 include_once("dbconnect.php");
 @$login = htmlspecialchars($_POST['login']);
-        @$nom = htmlspecialchars($_POST['nom']);
-        @$prenom = htmlspecialchars($_POST['prenom']);
+        
 
        
  //récupère les données du compte 
@@ -24,29 +23,7 @@ include_once("dbconnect.php");
     <title>Page modification profil</title>
 </head>
 
-    <header>
-    <nav class="navbar navbar-expand-lg bg-light">
-        <div class="container-fluid">
-          <a class="navbar-brand" href="#">Module_connexion</a>
-          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-          </button>
-          <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav mx-auto mb-2 mb-lg-0">
-            <li class="nav-item">
-              <a class="nav-link active" aria-current="page" href="site.php">Site</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link " aria-current="page" href="logout.php">Deconnexion</a>
-            </li>
-            
-              
-             
-             </ul>
-            </div>
-        </div>
-      </nav>
-</header>
+    
 <body>
     <div class="parallax_profil">
         <h2 class="text-center pt-5">Modifiez votre profil ici !!</h2>
@@ -58,15 +35,7 @@ include_once("dbconnect.php");
                             <label for="login">Modifier votre pseudo</label>
                             <input type="login" name="login" class="form-control form-control-lg" id="login" value="<?php echo $donnees['login'];   ?>">
                         </div>
-                        <div class="form-group">
-                            <label for="nom">Modifier votre nom</label>
-                            <input type="text" name="nom" class="form-control form-control-lg" id="nom" value="<?php echo $donnees['nom'];   ?>">
-                        </div>
-                        <div class="form-group">
-                            <label for="prenom">Modifier votre prénom</label>
-                            <input type="text" name="prenom" class="form-control form-control-lg" id="prenom" value="<?php echo $donnees['prenom'];   ?>">
-                        </div>
-                        <div class="form-group">
+                       <div class="form-group">
                             <label for="password">Modifier votre password</label>
                             <input type="password" name="password" class="form-control form-control-lg" id="password">
                         </div>
@@ -87,54 +56,42 @@ include_once("dbconnect.php");
             {
                 if (!$_POST['password'] == NULL and $_POST['confirm_password'] == NULL) {
                     echo ' <div class=row><div class="col-12"><p class="text-center">Vous devez confirmer votre mot de passe</p></div></div> ';
-                    
+
                 }
                 if ($_POST['password'] == NULL and !$_POST['confirm_password'] == NULL) {
                     echo ' <div class=row><div class="col-12"><p class="text-center">Vous n\'avez pas saisi le champs " Modifier votre password "</p></div></div> ';
-                    
+
                 }
-                if (!$_POST['password'] == NULL and !$_POST['confirm_password'] == NULL and  $_POST['password'] !== $_POST['confirm_password']) {
+                if (!$_POST['password'] == NULL and !$_POST['confirm_password'] == NULL and $_POST['password'] !== $_POST['confirm_password']) {
                     echo ' <div class=row><div class="col-12"><p class="text-center">Vous devez saisir deux mots de passe identiques</p></div></div> ';
-                    
-                    
+
+
                 }
                 if ($_POST['password'] === $_POST['confirm_password']) //modification du password
                 {
                     $password = $_POST['password'];
                     $password = password_hash($_POST['password'], PASSWORD_BCRYPT);
                     $req = $bdd->prepare('UPDATE utilisateurs SET password = :password WHERE id  = :id');
-                    $req->execute(array(
-                        'password' => $password,
-                        'id' => $donnees['id']));
+                    $req->execute(
+                        array(
+                            'password' => $password,
+                            'id' => $donnees['id']
+                        )
+                    );
                 }
-            } 
+            }
             if (!$_POST['login'] == NULL) //verif  changement pour le login
             {
                 $req = $bdd->prepare('UPDATE utilisateurs SET login = :login WHERE id  = :id');
-                $req->execute(array(
-                    'login' => $_POST['login'],
-                    'id' => $donnees['id']));
+                $req->execute(
+                    array(
+                        'login' => $_POST['login'],
+                        'id' => $donnees['id']
+                    )
+                );
                 $_SESSION['login'] = $_POST['login'];
             }
-            if (!$_POST['nom'] == NULL ) //verif changement pour le nom
-            {
-                $req = $bdd->prepare('UPDATE utilisateurs SET nom = :nom WHERE id  = :id');
-                $req->execute(array(
-                    'nom' => $_POST['nom'],
-                    'id' => $donnees['id']));
-                
-                    $_SESSION['nom'] = $_POST['nom'];
-            }
-            if (!$_POST['prenom'] == NULL ) //verif et changement pour le prénom
-            {
-                $req = $bdd->prepare('UPDATE utilisateurs SET prenom = :prenom WHERE id  = :id');
-                $req->execute(array(
-                    'prenom' => $_POST['prenom'],
-                    'id' => $donnees['id']));
-
-                $_SESSION['prenom'] = $_POST['prenom'];
-            }
-            header('Location: profil.php'); //rafraichissement de la page pour remettre les valeurs affichées dans les inputs à jour
+            header('Location: index.php');
         }
 ?>
     </div>
