@@ -1,0 +1,81 @@
+.parallax_accueil{
+    background-image:linear-gradient(rgba(255, 255, 255, 0.274),rgba(255, 255, 255, 0.295)), url('images/connexion_fd.jpg');
+    width:100%;
+    height:5000px;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    background-attachment: fixed;
+    margin-top: -10px;
+    
+    
+}
+.parallax_inscription{
+    background-image:linear-gradient(rgba(255, 255, 255, 0.274),rgba(255, 255, 255, 0.295)), url('images/inscription_fd.png');
+    width:100%;
+    height:700px;
+    background-repeat: no-repeat;
+    
+    background-size: cover;
+    background-attachment: scroll;
+    margin-top: -10px;
+    
+    
+}
+.parallax_connexion{
+    background-image:linear-gradient(rgba(255, 255, 255, 0.274),rgba(255, 255, 255, 0.295)), url('images/connexion_fd.jpg');
+    width:100%;
+    height:700px;
+    background-repeat: no-repeat;
+    
+    background-size: cover;
+    background-attachment: scroll;
+    margin-top: -10px;
+    
+    
+}
+.parallax_profil{
+    background-image:linear-gradient(rgba(255, 255, 255, 0.446),rgba(255, 255, 255, 0.463)), url('images/profil.jpg');
+    width:100%;
+    height:700px;
+    background-repeat: no-repeat;
+    
+    background-size: cover;
+    background-attachment: scroll;
+    margin-top: -10px;
+    
+    
+}
+.parallax_site{
+    background-image:linear-gradient(rgba(255, 255, 255, 0.193),rgba(255, 255, 255, 0.136)), url('images/site.jpg');
+    width:100%;
+    height:700px;
+    background-repeat: no-repeat;
+    
+    background-size: cover;
+    background-attachment: scroll;
+    margin-top: -10px;
+    
+    
+}
+.formulaire{
+    width: 50%;
+    display:flex;
+    flex-direction: column;
+    margin: auto;
+    background-color: bisque;
+    border: 2px solid black;
+    
+    
+}
+.acces{
+    background-image:linear-gradient(rgba(255, 255, 255, 0.193),rgba(255, 255, 255, 0.136)), url('./images/tableau.jpg');
+    width:100%;
+    height:750px;
+}
+.table{
+    background-color:aliceblue;
+    border: 2px solid black;
+    width:50%;
+    margin:auto;
+}
