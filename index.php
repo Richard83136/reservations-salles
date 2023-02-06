@@ -28,7 +28,13 @@ include('header.php');
     <div class="container-fluid">
       <div class="row">
         <div class="col-6">
+          <?php if(isset($_SESSION['login'])){?>
           <h2 class="text-center" style="font-size:2em;"><span style="font-size:2em; color:brown">B</span>ienvenue <?php echo $_SESSION['login'];?></h2><br>
+          <?php
+          }else{?>
+            <h2 class="text-center" style="font-size:2em;"><span style="font-size:2em; color:brown">B</span>ienvenue</h2><br>
+          <?php
+          };?>
             <p style="font-size:20px;text-align:justify;padding-left: 35%;" >Nous vous accueillerons dans un<br>univers calme et serein à l'abri de l'agitation<br>quotidienne<br><br>
             Les salles à la location que nous proposons, vous permettrons de travailler sereinement en équipe
             sur vos projets le temps  d’une heure, d'une journée, d'une semaine, ou plus  ………..<br>
