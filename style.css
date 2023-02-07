@@ -37,7 +37,7 @@
 .calendrier{
     background-image:linear-gradient(rgba(255, 255, 255, 0.372),rgba(255, 255, 255, 0.219)), url('images/salle3.jpg');
     width:100%;
-    height:700px;
+    height:760px;
     background-repeat: no-repeat;
     background-position: center;
     background-size: cover;
@@ -95,5 +95,20 @@
     margin:auto;
 }
 
-/*----page d accueil -----*/
-
+/*----page reservation -----*/
+.condition{
+    border: 1px solid black;
+    background-color: aliceblue;
+}
+.condition1{
+    text-align:center;
+    width:50%;
+    margin:auto;
+}
+.reservation-form{
+   display:flex;
+   justify-content: center;
+}
+.box2_reservation-form{
+    background-color: rgba(205, 225, 225, 0.253);
+}
