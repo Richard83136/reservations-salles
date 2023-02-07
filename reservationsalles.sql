@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1
--- Généré le : lun. 06 fév. 2023 à 16:26
--- Version du serveur : 10.4.25-MariaDB
--- Version de PHP : 8.1.10
+-- Généré le : mar. 07 fév. 2023 à 10:11
+-- Version du serveur : 10.4.27-MariaDB
+-- Version de PHP : 8.2.0
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -33,8 +33,16 @@ CREATE TABLE `reservations` (
   `description` text NOT NULL,
   `debut` datetime NOT NULL,
   `fin` datetime NOT NULL,
-  `id_utlisateur` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+  `id_utilisateur` int(11) NOT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+
+--
+-- Déchargement des données de la table `reservations`
+--
+
+INSERT INTO `reservations` (`id`, `titre`, `description`, `debut`, `fin`, `id_utilisateur`) VALUES
+(11, 'TEST', 'allo', '2022-02-03 10:00:00', '2022-02-03 11:00:00', 1),
+(12, 'association naturopathie', 'reunion de travail', '2023-02-07 09:00:00', '2023-02-07 10:00:00', 0);
 
 -- --------------------------------------------------------
 
@@ -46,7 +54,7 @@ CREATE TABLE `utilisateurs` (
   `id` int(11) NOT NULL,
   `login` varchar(255) NOT NULL,
   `password` varchar(25) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Déchargement des données de la table `utilisateurs`
@@ -80,7 +88,7 @@ ALTER TABLE `utilisateurs`
 -- AUTO_INCREMENT pour la table `reservations`
 --
 ALTER TABLE `reservations`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- AUTO_INCREMENT pour la table `utilisateurs`

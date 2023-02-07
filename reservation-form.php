@@ -1,102 +1,87 @@
 <?php
+session_start();
 include('header.php');
-include_once("dbconnect.php");
+
+//Conditions pour vérifier le post
+if (isset($_POST['Valider'])) {
+
+    //  Connexion à la BDD
+$bdd = mysqli_connect('localhost', 'root', '', 'reservationsalles') or die("Impossible de se connecter : " . mysqli_connect_error());
+
+
+
+    if (!empty($_POST['titre']) && !empty($_POST['description']) && !empty($_POST['datedebut']) && !empty($_POST['datedefin'])) {
+
+        //  Conditions pour vérifier les Post
+
+
+        //      Stockage des variable Post
+        $titre = htmlspecialchars($_POST['titre']);
+        $description = htmlspecialchars($_POST['description']);
+        $datedebut = htmlspecialchars($_POST['datedebut']);
+        $datedefin = htmlspecialchars($_POST['datedefin']);
+        //      Requête d'insertion de donné dans la table reservations
+        $addevent = "INSERT INTO reservations (titre , description , debut , fin , id_utilisateur) VALUES ('$titre','$description','$datedebut','$datedefin','$id_user')";
+
+        if (mysqli_query($bdd, $addevent)) {
+
+            header('Location: planning.php');
+            exit;
+        }
+    } else {
+
+        $erreur = "<p>Veuillez verifier tous les champs</p>";
+    }
+}
+ob_start();
 ?>
-<!DOCTYPE html>
-<html lang="fr">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
-    <link rel="stylesheet" href="style.css">
-    <title>Page reservation</title>
-</head>
 
-    
-    
-<div class="calendrier">
-	<div class="planning" style="padding-top:8%;">
-<h1 style=" text-align:center;">Calendrier de réservation</h1>
-<table border="1" cellpadding="5" width="1000" class=" tableau_resa mx-auto ">
-	<tr>
-		<td valign="top">
-		<form action="book.php" method="post" >
-			<h3>Faire une réservation de salle</h3>
-			<p><input checked="checked" name="item" type="radio" value="Wooden" /><b>Wooden</b> 
-			| <input name="item" type="radio" value="Inspirational" /><b>Inspirational</b> 
-			| <input name="item" type="radio" value="Street" /><b>Street</b> 
-			| <input name="item" type="radio" value="Meeting" /><b>Meeting</b> 
-			| <input name="item" type="radio" value="Brick" /><b>Brick</b></p>
-			<table style="width: 70%">
-				<tr >
-					<td><b>Login:</b></td>
-					<td> <input maxlength="100" name="name" required="" type="text" /></td>
-					<td>&nbsp;</td>
-					<td>&nbsp;</td>
-				</tr>
-				<tr>
-					<td ><b>Téléphone:</b></td>
-					<td>
-			<input maxlength="20" name="phone" required="" type="text" /></td>
-					<td>&nbsp;</td>
-					<td>&nbsp;</td>
-				</tr>
-				<tr>
-					<td><b>Jour de réservation:</b></td>
-					<td>
-			<input id="from" name="start_day" required="" type="text" /></td>
-				</tr>
-				<tr>
-					<td>&nbsp;</td>
-					<td> <select name="start_hour">
-			<option selected="selected">08</option>
-			<option>09</option>
-			<option>10</option>
-			<option>11</option>
-			<option>12</option>
-			<option>13</option>
-			<option>14</option>
-			<option>15</option>
-			<option>16</option>
-			<option>17</option>
-			<option>18</option>
-			</select></td>
-					<td>&nbsp;</td>
-					<td><select name="end_hour">
-          <option selected="selected">--</option>
-			<option>09</option>
-			<option>10</option>
-			<option>11</option>
-			<option>12</option>
-			<option>13</option>
-			<option>14</option>
-			<option>15</option>
-			<option>16</option>
-			<option>17</option>
-			<option>18</option>
-			<option>19</option>
-			
-			
-			
-			</select></td>
-				</tr>
-			</table><br>
-			<p>
-			<input name="book" type="submit" class="d-block mx-auto btn btn-info value="Réserver" />
-		</form>
-		</td><br>
-		<td valign="top"><br>
-		<h3 >Annuler la réservation</h3>
-		<form action="cancel.php" method="post">
-			<p></p>
-			ID: <input name="id" required="" type="text" /><br />
-			<p>
-			<p><input name="cancel" class="d-block mx-auto btn btn-danger" type="submit" value="Effacer" /></p>
-		</form>
-		</td>
-	</tr>
-</table><br>
+<div class="calendrier ">
+	<div class="planning" style="padding-top:5%;">
+<h1 style=" text-align:center;">Formulaire de réservation</h1>
+<div class="main2_reservation-form">
+                <article>
+                    <p style="text-align:center !important;color:white;" ><b>Durée maximum de 1H par réservervation</b></p>
+                    <p style="text-align:center !important;color:white;"><b>Veuillez préciser les informations de votre évènement :</b></p>
 
+                </article>
+                    
+                
+                <div class="condition1 big_box_reservation-form">
+                    <div class="reservation-form">
+                        <div class="box2_reservation-form">
+
+                            <form method="POST" action="" >
+
+                                <div>
+                                    <label for="Login : "></label>
+                                    <input type="text" name="titre" placeholder="Titre de l'évènement" size="25" />
+                                </div><br>
+
+                                <div>
+                                    <textarea name="description" cols="50" rows="5" placeholder="Description"></textarea>
+                                </div>
+
+                                <div>
+                                    <label for="Date de début : "></label>
+                                    <p style="text-align:center;">Date et Heure de début</p>
+                                    <input style="text-align:center;" type="datetime" name="datedebut" placeholder=" ex : 2022-01-21 08:00" size="25" />
+                                </div>
+
+                                <div>
+                                    <label for="Date de fin : "></label>
+                                    <p style="text-align:center;">Date et Heure de fin</p>
+                                    <input type="datetime" name="datedefin" placeholder=" ex : 2022-01-21 09:00" size="25" />
+                                </div>
+
+
+                                <input type="submit" name="Valider" value="Reserver" class="btn btn-success mt-3" />
+
+                            </form>
+
+                        </div>
+                    </div>
+                </div>
 </div>
-</div>
+
+
