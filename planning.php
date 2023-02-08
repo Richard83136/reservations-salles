@@ -6,7 +6,7 @@ session_start();
 <head>
   <meta charset="utf-8">
   <title>Planning</title>
-  <link rel="stylesheet" href="styleplanning.css">
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
