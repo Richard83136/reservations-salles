@@ -1,58 +1,44 @@
 <?php 
-
+// session_start();
 
 
 include_once("dbconnect.php");
         
         // $login = ($_POST['login']);
         // $password = ($_POST['password']);   
-if ( isset($_POST['submit']))
-{
+if ( !empty($_POST['login'])AND !empty($_POST['password'])){
     
     //vérification que l'utilisateur existe bien dans la bdd
-    $requete = $bdd->prepare(' SELECT * FROM utilisateurs where login = :login');
-    $requete->execute(['login' => $_POST['login']]);
+    $requete = $bdd->prepare(' SELECT * FROM utilisateurs');
+    $requete->execute();
     $result = $requete->fetch();
-    if ( $result == true)
-    {
-            if  ( $_POST['password'] AND $_POST['login']) //vérification si la connection concerne le compte admin
-                { session_start();// ouverture de la session admin
-                    $req = $bdd->prepare('SELECT * FROM utilisateurs  WHERE login  = :login');
-                    $req->execute(array('login' => $_POST['login']));
-                    $_SESSION = $req->fetch();
-                    $_SESSION['login'] = $_POST['login'];
-                    header('Location: index.php');//redirection
-                }
-            else 
-                {
-                        if ( password_verify($_POST['password'],$result['password']))// sinon certification du mpd, pour ouvrir une session utilisateur classique
-                            {
-                                session_start();
-                                $req = $bdd->prepare('SELECT * FROM utilisateurs  WHERE login  = :login');
-                                $req->execute(array('login' => $_POST['login']));
-                                $_SESSION = $req->fetch();
-                                $_SESSION['login'] = $_POST['login'];
+    // $login = $_SESSION['login'];
+    
+    if($_POST['password']== $result['password'] && $_POST['login']==$result['login']){
+
+                                $login = $_POST['login'];
+                                $password = $_POST['password'];
                                 
-                                header('Location: connexion.php');//redirection
-                            }
-                        else 
-                        {
-                            ?> <p class='alert alert-danger alert-dismissible fade show'> identifiants incorrects </p>;
+                                $req = $bdd->prepare('SELECT * FROM utilisateurs  WHERE login = ? AND password =    ?');
+                                $req->execute(array($login,$password));
+                                if($req->rowCount()>0){
+            $_SESSION['login'] = $login;
+            $_SESSION['password'] = $password;
+                    $_SESSION['users'] = $req->fetchAll();
+                    
+                                }
+                                
+                                header('Location: index.php');//redirection
+                            } else {
+        ?> <p class='alert alert-danger alert-dismissible fade show'> Login ou Mot de passe incorrect </p>
 	<?php
-                            
-                        }
+            // header('Location: connexion.php'); //redirection    
+    }       
                 }
-    }
-    else
-    {
-		?>
-        <p class='alert alert-danger alert-dismissible fade show'> identifiants incorrects </p> 
-	<?php
-    } 
+		?>  
 
-}
 
-?>
+
 
 
 <!DOCTYPE html>
@@ -98,20 +84,20 @@ if ( isset($_POST['submit']))
             <form class="w-50"  action="connexion.php" method="post">
                         <p class="text-center"> <?php  echo @$mauvaisidentifiants;  ?> </p>
                         <div class="form-group">
-                            <label for="login"><b>Login</b></label>
-                            <input  type="login" name="login" required class="form-control" style="border:1px solid black;" id="login" aria-describedby="emailHelp">
+                            <label for="login">Login</label>
+                            <input  type="login" name="login" required class="form-control" id="login" aria-describedby="emailHelp">
                         </div>
                         <div class="form-group">
-                            <label for="exampleInputPassword1"><b>Password</b></label>
-                            <input type="password" name="password" required class="form-control" style="border:1px solid black;" id="exampleInputPassword1">
+                            <label for="exampleInputPassword1">Password</label>
+                            <input type="password" name="password" required class="form-control" id="exampleInputPassword1">
                         </div>
                         <div class="row">
                         <div class="d-grid gap-2 col-6 mx-auto">
-                        <button type="submit" name="submit" class="btn btn-info mt-3 ">Connexion</button></div>
+                        <button type="submit" name="submit" class="btn btn-primary mt-3 ">Connexion</button></div>
 							<br>
                         <div class="ins">
 							
-                            <p class="alert alert-info alert-dismissible fade show mt-3 rounded" style="border:1px solid black;">Vous n'êtes pas encore inscrit ?</p>
+                            <p class="alert alert-info alert-dismissible fade show mt-3 rounded">Vous n'êtes pas encore inscrit ?</p>
                             <div class="d-grid gap-2 col-6 mx-auto">	
                         <a href="inscription.php" class="btn btn-primary mb-3">Inscription</a></div>
             </form>
