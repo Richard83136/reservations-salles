@@ -42,6 +42,8 @@ include_once("dbconnect.php");
 <body>
     <div class="parallax_inscription">  
     <h1 class="text-center pt-5">Bienvenue sur la page d'inscription </h1>   
+
+
             
             
             
@@ -52,7 +54,10 @@ include_once("dbconnect.php");
                             <div class="form-group form-control-lg">
                                 <label for="login">Choisissez votre Login:</label>
                                 <input type="login" name="login" class="form-control form-control-lg" id="login">
+
                             </div>
+                            
+
                             
                             
                             <div class="form-group form-control-lg">
@@ -65,7 +70,9 @@ include_once("dbconnect.php");
                             </div>
                             <div class="d-grid gap-2 col-6 mx-auto">
                             <button type="submit" class="btn btn-primary">Submit</button>
+
     </div></div>
+
                         </form>
                     </div>
                 </div>
