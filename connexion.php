@@ -8,7 +8,6 @@ include_once("dbconnect.php");
         // $password = ($_POST['password']);   
 if ( !empty($_POST['login'])AND !empty($_POST['password'])){
 
-
     
     //vérification que l'utilisateur existe bien dans la bdd
     $requete = $bdd->prepare(' SELECT * FROM utilisateurs');
@@ -21,6 +20,7 @@ if ( !empty($_POST['login'])AND !empty($_POST['password'])){
 
                                 $login = $_POST['login'];
                                 $password = $_POST['password'];
+
                                 
                                 $req = $bdd->prepare('SELECT * FROM utilisateurs  WHERE login = ? AND password =    ?');
                                 $req->execute(array($login,$password));
