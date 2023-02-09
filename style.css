@@ -112,3 +112,41 @@
 .box2_reservation-form{
     background-color: rgba(205, 225, 225, 0.253);
 }
+.box_titre_planning{
+    background-image:linear-gradient(rgba(255, 255, 255, 0.274),rgba(255, 255, 255, 0.295)), url('images/salleinspirational.jpg');
+    width:100%;
+    height:auto;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    background-attachment: scroll;
+    margin-top: -10px;
+}
+
+
+/*-------planning--------*/
+.fond_ecran_reservation{
+    background-image:linear-gradient(rgba(255, 255, 255, 0.23),rgba(255, 255, 255, 0.219)), url('images/sallebrick.jpg');
+    width:100%;
+    height:auto;;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    background-attachment: scroll;
+    margin-top: -10px;
+    padding-bottom:5%;
+}
+.ligne-jours{
+    border:2px solid black;
+    text-align:center;
+}
+.tableau{
+    background-color: rgba(240, 255, 255, 0.527);
+    width:auto;
+    border:2px solid black;
+    font-weight:bold;
+    margin:auto;
+    text-align:center;
+    padding:2%;
+    
+}
