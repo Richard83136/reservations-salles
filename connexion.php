@@ -6,19 +6,22 @@ include_once("dbconnect.php");
         
         // $login = ($_POST['login']);
         // $password = ($_POST['password']);   
-if ( isset($_POST['submit'])){
+if ( !empty($_POST['login'])AND !empty($_POST['password'])){
+
+
     
     //vérification que l'utilisateur existe bien dans la bdd
-    $requete = $bdd->prepare(' SELECT * FROM utilisateurs where login = :login');
-    $requete->execute(['login' => $_POST['login']]);
+    $requete = $bdd->prepare(' SELECT * FROM utilisateurs');
+    $requete->execute();
     $result = $requete->fetch();
     // $login = $_SESSION['login'];
     
-    if ($_POST['password']== $result['password']){
+
+    if($_POST['password']== $result['password'] && $_POST['login']==$result['login']){
 
                                 $login = $_POST['login'];
                                 $password = $_POST['password'];
-                                session_start();
+                                
                                 $req = $bdd->prepare('SELECT * FROM utilisateurs  WHERE login = ? AND password =    ?');
                                 $req->execute(array($login,$password));
                                 if($req->rowCount()>0){
@@ -30,7 +33,8 @@ if ( isset($_POST['submit'])){
                                 
                                 header('Location: index.php');//redirection
                             } else {
-        ?> <p class='alert alert-danger alert-dismissible fade show'> Mot de passe incorrect </p>
+        ?> <p class='alert alert-danger alert-dismissible fade show'> Login ou Mot de passe incorrect </p>
+
 	<?php
             // header('Location: connexion.php'); //redirection    
     }       
