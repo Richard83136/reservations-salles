@@ -7,6 +7,7 @@ include_once("dbconnect.php");
         // $login = ($_POST['login']);
         // $password = ($_POST['password']);   
 if ( !empty($_POST['login'])AND !empty($_POST['password'])){
+
     
     //vérification que l'utilisateur existe bien dans la bdd
     $requete = $bdd->prepare(' SELECT * FROM utilisateurs');
@@ -14,10 +15,12 @@ if ( !empty($_POST['login'])AND !empty($_POST['password'])){
     $result = $requete->fetch();
     // $login = $_SESSION['login'];
     
+
     if($_POST['password']== $result['password'] && $_POST['login']==$result['login']){
 
                                 $login = $_POST['login'];
                                 $password = $_POST['password'];
+
                                 
                                 $req = $bdd->prepare('SELECT * FROM utilisateurs  WHERE login = ? AND password =    ?');
                                 $req->execute(array($login,$password));
@@ -31,6 +34,7 @@ if ( !empty($_POST['login'])AND !empty($_POST['password'])){
                                 header('Location: index.php');//redirection
                             } else {
         ?> <p class='alert alert-danger alert-dismissible fade show'> Login ou Mot de passe incorrect </p>
+
 	<?php
             // header('Location: connexion.php'); //redirection    
     }       
