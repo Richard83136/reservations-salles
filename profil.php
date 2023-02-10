@@ -54,30 +54,32 @@ include_once("dbconnect.php");
         {
             if (!$_POST['password'] == NULL or !$_POST['confirm_password'] == NULL) //verif pour le password
             {
-                if (!$_POST['password'] == NULL and $_POST['confirm_password'] == NULL) {
-                    echo ' <div class=row><div class="col-12"><p class="text-center">Vous devez confirmer votre mot de passe</p></div></div> ';
+                if (!$_POST['password'] == NULL and $_POST['confirm_password'] == NULL) { ?>
+                    <p style="font-size:30px;text-align:center;margin-top:-200px;">Vous devez confirmer votre mot de passe</p></div></div> 
 
-                }
-                if ($_POST['password'] == NULL and !$_POST['confirm_password'] == NULL) {
-                    echo ' <div class=row><div class="col-12"><p class="text-center">Vous n\'avez pas saisi le champs " Modifier votre password "</p></div></div> ';
+                    <?php }
+                if ($_POST['password'] == NULL and !$_POST['confirm_password'] == NULL) { ?>
+                    <p style="font-size:30px;text-align:center;margin-top:-200px;">Vous n\'avez pas saisi le champs " Modifier votre password "</p></div></div> 
 
-                }
-                if (!$_POST['password'] == NULL and !$_POST['confirm_password'] == NULL and $_POST['password'] !== $_POST['confirm_password']) {
-                    echo ' <div class=row><div class="col-12"><p class="text-center">Vous devez saisir deux mots de passe identiques</p></div></div> ';
+                    <?php }
+                if (!$_POST['password'] == NULL and !$_POST['confirm_password'] == NULL and $_POST['password'] !== $_POST['confirm_password']) { ?>
+                    <p style="font-size:30px;text-align:center;margin-top:-200px;">Vous devez saisir deux mots de passe identiques</p></div></div> 
 
 
-                }
+                    <?php }
                 if ($_POST['password'] === $_POST['confirm_password']) //modification du password
                 {
                     $password = $_POST['password'];
-                    $password = password_hash($_POST['password'], PASSWORD_BCRYPT);
+                    $password = ($_POST['password']);
                     $req = $bdd->prepare('UPDATE utilisateurs SET password = :password WHERE id  = :id');
                     $req->execute(
                         array(
                             'password' => $password,
                             'id' => $donnees['id']
                         )
-                    );
+                    ); 
+                    header('Location: index.php');
+
                 }
             }
             if (!$_POST['login'] == NULL) //verif  changement pour le login
@@ -91,9 +93,8 @@ include_once("dbconnect.php");
                 );
                 $_SESSION['login'] = $_POST['login'];
             }
-            header('Location: index.php');
         }
-?>
+        ?>
     </div>
 
 
