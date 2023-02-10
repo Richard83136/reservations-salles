@@ -1,5 +1,5 @@
 <?php
-include_once("dbconnect.php");
+include("dbconnect.php");
 
         @$login = htmlspecialchars($_POST['login']);
         
@@ -69,7 +69,7 @@ include_once("dbconnect.php");
                                 <input type="password" name="confirm_password" class="form-control form-control-lg" id="confirm_password">
                             </div>
                             <div class="d-grid gap-2 col-6 mx-auto">
-                            <button type="submit" class="btn btn-primary">Submit</button>
+                            <button type="submit" class="btn btn-primary">S'enregistrer</button>
 
 
     </div></div>
@@ -83,35 +83,15 @@ include_once("dbconnect.php");
 
             <?php
         } else {
-            $req = $bdd->prepare(' SELECT * FROM utilisateurs WHERE login = :login '); //on va chercher dans la bdd si le login existe déjà
-            $req->execute(array('login' => $_POST['login']));
+            $req = $bdd->prepare(' SELECT * FROM utilisateurs  WHERE login = ?'); //on va chercher dans la bdd si le login existe déjà
+            $req->execute(array($login));
             $donnees = $req->fetch();
             if (@$donnees['login'] == $_POST['login']) // on compare le résultat, si c'est le cas on générère un form avec le message " login déjà utilisé " 
             {
             ?>
-                <div class="container " id="page_centrale_connexion">
-                    <div class="row h-100  ">
-                        <div class="col-12 h-100 d-flex justify-content-center align-items-center">
-                            <form class="w-50" action="inscription.php" method="post">
-                                <div class="form-group form-control-lg">
-                                    <label for="login">Choisissez votre Login:</label>
-                                    <input type="login" name="login" class="form-control form-control-lg" id="login" value="<?php if (isset($login)) {echo $login;} ?>">
-                                </div>
-                               
-                                <div class="form-group form-control-lg">
-                                    <label for="password">Password:</label>
-                                    <input type="password" name="password" class="form-control form-control-lg" id="password">
-                                </div>
-                                <div class="form-group form-control-lg">
-                                    <label for="confirm_password">Confirmer le Password:</label>
-                                    <input type="password" name="confirm_password" class="form-control form-control-lg" id="confirm_password">
-                                </div>
-                                <p class="alert alert-danger alert-dismissible fade show">Login déjà utilisé, veuillez en choisir un autre.</p>
-                                <button type="submit" class="btn btn-primary">Submit</button>
-                            </form>
-                        </div>
-                    </div>
-                </div>
+                <div style="background-image:linear-gradient(rgba(255, 255, 255, 0.274),rgba(255, 255, 255, 0.295)), url('images/salleinspirational.jpg');width:100%;height:840px;background-repeat: no-repeat;background-position: center;background-size: cover;background-attachment: scroll;margin-top: -10px;">
+                <h3 style="text-align:center; padding-top:10%;">Login déjà utilisé veuillez en choisir un autre</h3>
+                <button style="background-color:red; border-radius:20px;display:block;margin:auto;height:30px;"><a href="inscription.php" style="color:white;">retour formulaire inscription</a> </button></div>
                 <?php
             } else {
                 if ($_POST['login'] != NULL  and  $_POST['password'] != NULL and  $_POST['confirm_password'] != NULL)
@@ -128,61 +108,19 @@ include_once("dbconnect.php");
                     } else
                     // si mdp non identiques, on génère le formulaire avec un message
                     { ?>
-                        <div class="container " id="page_centrale_connexion">
-                            <div class="row h-100  ">
-                                <div class="col-12 h-100 d-flex justify-content-center align-items-center">
-                                    <form class="w-50" action="inscription.php" method="post">
-                                        <div class="form-group form-control-lg">
-                                            <label for="login">Choisissez votre Login:</label>
-                                            <input type="login" name="login" class="form-control form-control-lg" id="login" value="<?php if (isset($login)) {echo $login;} ?>">
-                                        </div>
-                                        
-                                       
-                                        <div class="form-group form-control-lg">
-                                            <label for="password">Password:</label>
-                                            <input type="password" name="password" class="form-control form-control-lg" id="password">
-                                        </div>
-                                        <div class="form-group form-control-lg">
-                                            <label for="confirm_password">Confirmer le Password:</label>
-                                            <input type="password" name="confirm_password" class="form-control form-control-lg" id="confirm_password">
-                                        </div>
-                                        <p class="alert alert-danger alert-dismissible fade show"><strong>Erreur!</strong>Les mots de passe ne sont pas identiques</p>
-                                        <button type="submit" class="btn btn-primary">Submit</button>
-                                    </form>
-                                </div>
-                            </div>
-                        </div>
+                        <div style="background-image:linear-gradient(rgba(255, 255, 255, 0.274),rgba(255, 255, 255, 0.295)), url('images/salleinspirational.jpg');width:100%;height:840px;background-repeat: no-repeat;background-position: center;background-size: cover;background-attachment: scroll;margin-top: -10px;">
+                        <h3 style="text-align:center; padding-top:10%;">Les mots de passe ne sont pas identiques</h3>
+                <button style="background-color:red; border-radius:20px;display:block;margin:auto;height:30px;"><a href="inscription.php" style="color:white;">retour formulaire inscription</a> </button></div>
                     <?php
                     }
                 } else
                 // if empty :
                 { ?>
-                    <div class="container " id="page_centrale_connexion">
-                        <div class="row h-100  ">
-                            <div class="col-12 h-100 d-flex justify-content-center align-items-center">
-                                <form class="w-50" action="inscription.php" method="post">
-                                    <div class="form-group form-control-lg">
-                                        <label for="login">Choisissez votre Login:</label>
-                                        <input type="login" name="login" class="form-control form-control-lg" id="login" value="<?php if (isset($login)) echo $login;} ?>">
-                                    </div>
-                                   
-                                   
-                                    <div class="form-group form-control-lg">
-                                        <label for="password">Password:</label>
-                                        <input type="password" name="password" class="form-control form-control-lg" id="password">
-                                    </div>
-                                    <div class="form-group form-control-lg">
-                                        <label for="confirm_password">Confirmer le Password:</label>
-                                        <input type="password" name="confirm_password" class="form-control form-control-lg" id="confirm_password">
-                                    </div>
-                                    <p class="alert alert-info alert-dismissible fade show">veuillez remplir tous les champs:</p>
-                                    <button type="submit" class="btn btn-primary">Submit</button>
-                                </form>
-                            </div>
-                        </div>
-                    </div>
+                    <div style="background-image:linear-gradient(rgba(255, 255, 255, 0.274),rgba(255, 255, 255, 0.295)), url('images/salleinspirational.jpg');width:100%;height:840px;background-repeat: no-repeat;background-position: center;background-size: cover;background-attachment: scroll;margin-top: -10px;">
+                    <h3 style="text-align:center; padding-top:10%;">Veuillez remplir tous les champs</h3>
+                <button style="background-color:red; border-radius:20px;display:block;margin:auto;height:30px;"><a href="inscription.php" style="color:white;">retour formulaire inscription</a> </button></div>
         <?php
-                }
+                }}
             }
         $bdd = null;
         ?>
