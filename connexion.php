@@ -1,34 +1,28 @@
 <?php 
-// session_start();
-
 
 include_once("dbconnect.php");
         
-        // $login = ($_POST['login']);
-        // $password = ($_POST['password']);   
+   
 if ( !empty($_POST['login'])AND !empty($_POST['password'])){
 
-    
+    $login = $_POST['login'];
+    $password = $_POST['password'];
+
     //vérification que l'utilisateur existe bien dans la bdd
-    $requete = $bdd->prepare(' SELECT * FROM utilisateurs');
-    $requete->execute();
-    $result = $requete->fetch();
-    // $login = $_SESSION['login'];
+    $requete = $bdd->prepare('SELECT * FROM utilisateurs WHERE login = ?');
+    $requete->execute(array($login));
+    $result = $requete->fetch(PDO::FETCH_ASSOC);
+   
     
+if($result == true){
 
-    if($_POST['password']== $result['password'] && $_POST['login']==$result['login']){
 
-                                $login = $_POST['login'];
-                                $password = $_POST['password'];
-
-                                
-                                $req = $bdd->prepare('SELECT * FROM utilisateurs  WHERE login = ? AND password =    ?');
+    if($_POST['password'] == $result['password'] && $_POST['login'] == $result['login']){
+                                $req = $bdd->prepare('SELECT * FROM utilisateurs  WHERE login = ? AND password = ?');
                                 $req->execute(array($login,$password));
                                 if($req->rowCount()>0){
-            $_SESSION['login'] = $login;
-            $_SESSION['password'] = $password;
-                    $_SESSION['users'] = $req->fetchAll();
-                    
+                                $_SESSION = $req->fetch(PDO::FETCH_ASSOC);
+           
                                 }
                                 
                                 header('Location: index.php');//redirection
@@ -39,6 +33,7 @@ if ( !empty($_POST['login'])AND !empty($_POST['password'])){
             // header('Location: connexion.php'); //redirection    
     }       
                 }
+            }
 		?>  
 
 
@@ -58,7 +53,7 @@ if ( !empty($_POST['login'])AND !empty($_POST['password'])){
 
     <header>
     <nav class="navbar navbar-expand-lg bg-light">
-        <div class="container-fluid">
+                <div class="container-fluid">
           <a class="navbar-brand" href="#">Reservation de salles</a>
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>

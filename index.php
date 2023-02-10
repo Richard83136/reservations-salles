@@ -15,7 +15,6 @@ include('header.php');
 
     
 <body>
-    
     <div class="parallax_accueil">
         <h1 class="text-center pt-5">Reserver votre salle </h1>
         <p style="text-align:center; color:white;">Vous devez vous inscrire , et/ou vous connecter afin de pouvoir poursuivre sur notre site</p>
