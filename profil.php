@@ -1,5 +1,5 @@
 <?php
-include('header.php');
+//include('header.php');
 include_once("dbconnect.php");
 @$login = htmlspecialchars($_POST['login']);
         
@@ -25,6 +25,27 @@ include_once("dbconnect.php");
 
     
 <body>
+        <nav class="navbar navbar-expand-lg navbar-light bg-body-tertiary">
+  
+  <a class="navbar-brand" href="#">Reservation de salles</a>
+  <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse " id="navbarNav">
+    <ul class="navbar-nav mx-auto">
+      <!--<li class="nav-item">
+        <a class="nav-link active" aria-current="page" href="livre-or.php">Livre d'or</a>
+      </li>-->
+      <li class="nav-item">
+        <a class="nav-link text-dark" href="index.php">Accueil</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link text-dark" href="planning.php">Planning</a>
+      </li>
+      </ul>
+  </div>
+
+</nav>
     <div class="parallax_profil">
         <h2 class="text-center pt-5">Modifiez votre profil ici !!</h2>
         <div class="container "  id="page_centrale_connexion">
@@ -55,15 +76,15 @@ include_once("dbconnect.php");
             if (!$_POST['password'] == NULL or !$_POST['confirm_password'] == NULL) //verif pour le password
             {
                 if (!$_POST['password'] == NULL and $_POST['confirm_password'] == NULL) { ?>
-                    <p style="font-size:30px;text-align:center;margin-top:-200px;">Vous devez confirmer votre mot de passe</p></div></div> 
+                    <p style="font-size:30px;text-align:center;margin-top:20px;">Vous devez confirmer votre mot de passe</p></div></div> 
 
                     <?php }
                 if ($_POST['password'] == NULL and !$_POST['confirm_password'] == NULL) { ?>
-                    <p style="font-size:30px;text-align:center;margin-top:-200px;">Vous n\'avez pas saisi le champs " Modifier votre password "</p></div></div> 
+                    <p style="font-size:30px;text-align:center;margin-top:20px;">Vous n'avez pas saisi le champs " Modifier votre password "</p></div></div> 
 
                     <?php }
                 if (!$_POST['password'] == NULL and !$_POST['confirm_password'] == NULL and $_POST['password'] !== $_POST['confirm_password']) { ?>
-                    <p style="font-size:30px;text-align:center;margin-top:-200px;">Vous devez saisir deux mots de passe identiques</p></div></div> 
+                    <p style="font-size:30px;text-align:center;margin-top:20px;">Vous devez saisir deux mots de passe identiques</p></div></div> 
 
 
                     <?php }
