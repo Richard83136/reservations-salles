@@ -99,7 +99,7 @@ include_once("dbconnect.php");
                             'id' => $donnees['id']
                         )
                     ); 
-                    header('Location: index.php');
+                    header('Location: logout.php');
 
                 }
             }
