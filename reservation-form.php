@@ -65,13 +65,17 @@ ob_start();
                                 <div>
                                     <label for="Date de début : "></label>
                                     <p style="text-align:center;">Date et Heure de début</p>
-                                    <input style="text-align:center;" type="datetime" name="datedebut" placeholder=" ex : 2022-01-21 08:00" size="25" />
+                                    <input type="datetime-local" 
+       name="datedebut" value="2023-02-13T08:00"
+       min="2023-01-01T08:00" max="2023-12-31T19:00">
                                 </div>
 
                                 <div>
                                     <label for="Date de fin : "></label>
                                     <p style="text-align:center;">Date et Heure de fin</p>
-                                    <input type="datetime" name="datedefin" placeholder=" ex : 2022-01-21 09:00" size="25" />
+                                    <input type="datetime-local" 
+       name="datedefin" value="2023-02-13T09:00"
+       min="2023-01-01T08:00" max="2023-12-31T19:00">
                                 </div>
 
 
