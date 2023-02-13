@@ -30,7 +30,7 @@ if($result == true){
         ?> <p class='alert alert-danger alert-dismissible fade show'> Login ou Mot de passe incorrect </p>
 
 	<?php
-            // header('Location: connexion.php'); //redirection    
+               
     }       
                 }
             }
