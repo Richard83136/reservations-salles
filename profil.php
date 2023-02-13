@@ -1,5 +1,5 @@
 <?php
-include('header.php');
+//include('header.php');
 include_once("dbconnect.php");
 @$login = htmlspecialchars($_POST['login']);
         
@@ -25,6 +25,27 @@ include_once("dbconnect.php");
 
     
 <body>
+        <nav class="navbar navbar-expand-lg navbar-light bg-body-tertiary">
+  
+  <a class="navbar-brand" href="#">Reservation de salles</a>
+  <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse " id="navbarNav">
+    <ul class="navbar-nav mx-auto">
+      <!--<li class="nav-item">
+        <a class="nav-link active" aria-current="page" href="livre-or.php">Livre d'or</a>
+      </li>-->
+      <li class="nav-item">
+        <a class="nav-link text-dark" href="index.php">Accueil</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link text-dark" href="planning.php">Planning</a>
+      </li>
+      </ul>
+  </div>
+
+</nav>
     <div class="parallax_profil">
         <h2 class="text-center pt-5">Modifiez votre profil ici !!</h2>
         <div class="container "  id="page_centrale_connexion">
@@ -36,7 +57,7 @@ include_once("dbconnect.php");
                             <input type="login" name="login" class="form-control form-control-lg" style="border:1px solid black;"id="login" value="<?php echo $donnees['login'];   ?>">
                         </div>
                        <div class="form-group">
-                            <label for="password">Modifier password</label>
+                            <label for="password">Modifier votre password</label>
                             <input type="password" name="password" class="form-control form-control-lg" style="border:1px solid black;"id="password">
                         </div>
                         <div class="form-group">
@@ -54,18 +75,19 @@ include_once("dbconnect.php");
         {
             if (!$_POST['password'] == NULL or !$_POST['confirm_password'] == NULL) //verif pour le password
             {
-                if (!$_POST['password'] == NULL and $_POST['confirm_password'] == NULL) {?>
-                     <p style="font-size:30px;text-align:center;margin-top:-200px;">Vous devez confirmer votre mot de passe</p></div></div> 
+                if (!$_POST['password'] == NULL and $_POST['confirm_password'] == NULL) { ?>
+                    <p style="font-size:30px;text-align:center;margin-top:20px;">Vous devez confirmer votre mot de passe</p></div></div> 
 
-               <?php }
-                if ($_POST['password'] == NULL and !$_POST['confirm_password'] == NULL) {?>
-                    <p style="font-size:30px;text-align:center;margin-top:-200px;">Vous n'avez pas saisi le champs " Modifier votre password "</p></div></div> 
+                    <?php }
+                if ($_POST['password'] == NULL and !$_POST['confirm_password'] == NULL) { ?>
+                    <p style="font-size:30px;text-align:center;margin-top:20px;">Vous n'avez pas saisi le champs " Modifier votre password "</p></div></div> 
 
-               <?php }
+                    <?php }
                 if (!$_POST['password'] == NULL and !$_POST['confirm_password'] == NULL and $_POST['password'] !== $_POST['confirm_password']) { ?>
-                    <p style="font-size:30px;text-align:center;margin-top:-200px;">Vous devez saisir deux mots de passe identiques</p></div></div> 
-                    
-                <?php }
+                    <p style="font-size:30px;text-align:center;margin-top:20px;">Vous devez saisir deux mots de passe identiques</p></div></div> 
+
+
+                    <?php }
                 if ($_POST['password'] === $_POST['confirm_password']) //modification du password
                 {
                     $password = $_POST['password'];
@@ -76,10 +98,10 @@ include_once("dbconnect.php");
                             'password' => $password,
                             'id' => $donnees['id']
                         )
-                    );
-                    header('Location: index.php');
+                    ); 
+                    header('Location: logout.php');
+
                 }
-                
             }
             if (!$_POST['login'] == NULL) //verif  changement pour le login
             {
@@ -92,9 +114,8 @@ include_once("dbconnect.php");
                 );
                 $_SESSION['login'] = $_POST['login'];
             }
-            // header('Location: index.php');
         }
-?>
+        ?>
     </div>
 
 
