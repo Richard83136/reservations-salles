@@ -40,20 +40,27 @@ session_start();
 		<tr style="padding-left:2%;padding-right:2%;" >
 			<th >
 			</th>
-			<th class="ligne-jours"  >&nbsp;Lundi&nbsp;<br><?php echo $jour_semaine = date('d/m', strtotime('monday this week'));?>
+			<th class="ligne-jours"  >
+				&nbsp;Lundi&nbsp;
 			</th>
-			<th  class="ligne-jours" >&nbsp;Mardi&nbsp;<br><?php echo $jour_semaine = date('d/m', strtotime('tuesday this week'));?>
+			<th  class="ligne-jours" >
+				&nbsp;Mardi&nbsp;
 			</th>
-			<th  class="ligne-jours">&nbsp;Mercredi&nbsp;<br><?php echo $jour_semaine = date('d/m', strtotime('wednesday this week'));?>
+			<th  class="ligne-jours">
+				&nbsp;Mercredi&nbsp;
 			</th>
-			<th class="ligne-jours">&nbsp;Jeudi&nbsp;<br><?php echo $jour_semaine = date('d/m', strtotime('thursday this week'));?>
+			<th class="ligne-jours">
+				&nbsp;Jeudi&nbsp;
 			</th>
-			<th class="ligne-jours">&nbsp;Vendredi&nbsp;<br><?php echo $jour_semaine = date('d/m', strtotime('friday this week'));?>
+			<th class="ligne-jours">
+				&nbsp;Vendredi&nbsp;
 			</th>
-			<!-- <th class="ligne-jours">&nbsp;Samedi&nbsp;
-			</th>
-			<th class="ligne-jours">&nbsp;Dimanche&nbsp;
-			</th> -->
+			<!--<th class="ligne-jours">
+				&nbsp;Samedi&nbsp;
+			</th>-->
+			<!--<th class="ligne-jours">
+				&nbsp;Dimanche&nbsp;
+			</th>-->
 		</tr>
 	</thead>
 	<tbody>
