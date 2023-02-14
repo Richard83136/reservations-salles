@@ -96,6 +96,25 @@
 }
 
 /*----page reservation -----*/
+.parallax_reservation{
+    background-image:linear-gradient(rgba(255, 255, 255, 0.274),rgba(255, 255, 255, 0.295)), url('images/sallereservation.jpg');
+    width:100%;
+    height:780px;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    background-attachment: scroll;
+    margin-top: -10px;
+    
+    
+}
+.formu_resa{
+    background-color:rgba(0, 255, 255, 0.34);
+    width: 50%;
+    margin:auto;
+    text-align: center; 
+    
+}
 .condition{
     border: 1px solid black;
     background-color: aliceblue;
