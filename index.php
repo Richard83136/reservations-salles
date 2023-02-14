@@ -19,7 +19,7 @@ include('header.php');
         <h1 class="text-center pt-5">Reserver votre salle </h1>
         <p style="text-align:center; color:white;">Vous devez vous inscrire , et/ou vous connecter afin de pouvoir poursuivre sur notre site</p>
     </div>  
-    <div class="parallax" style="background-image: url('./images/salle1.jpg'); height:520px;background-attachment: fixed;background-position: center;background-repeat: no-repeat;background-size: cover;">
+    <div class="parallax" style="background-image: url('./images/salle1.jpg'); height:320px;background-attachment: fixed;background-position: center;background-repeat: no-repeat;background-size: cover;">
   <h1 style="color:black; text-align:center; padding-top:150px;">Réservation <br>de salles</h1>
 </div>
   <div class="parallax1" >

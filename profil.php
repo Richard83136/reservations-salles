@@ -117,6 +117,16 @@ include_once("dbconnect.php");
         }
         ?>
     </div>
+    <footer>
+  <div class="row">
+    <div class="col">
+      <h5>&copy; 2023 | Reservation de salles</h5>
+    </div>
+    <div class="col">
+      <h6 style="padding-top:5px;">By Julien.Jaumaux && Richard.Schulze</h6>
+    </div>
+  </div>
+</footer>
 
 
 
