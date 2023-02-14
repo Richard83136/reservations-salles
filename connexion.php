@@ -27,7 +27,7 @@ if($result == true){
                                 
                                 header('Location: index.php');//redirection
                             } else {
-        ?> <p class='alert alert-danger alert-dismissible fade show'> Login ou Mot de passe incorrect </p>
+        ?> <p class='alert alert-danger alert-dismissible fade show'> Mot de passe incorrect </p>
 
 	<?php
                
