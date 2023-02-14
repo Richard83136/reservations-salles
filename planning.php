@@ -55,12 +55,12 @@ session_start();
 			<th class="ligne-jours">
 				&nbsp;Vendredi&nbsp;
 			</th>
-			<th class="ligne-jours">
+			<!-- <th class="ligne-jours">
 				&nbsp;Samedi&nbsp;
 			</th>
 			<th class="ligne-jours">
 				&nbsp;Dimanche&nbsp;
-			</th>
+			</th> -->
 		</tr>
 	</thead>
 	<tbody>
@@ -71,7 +71,7 @@ session_start();
 			echo "<tr style='border:2px solid black;'>";
 			echo "<td style='border:2px solid black;padding:10px;'>".$ligne."h</td>";
 
-			for($colonne = 1; $colonne <= 7; $colonne++)
+			for($colonne = 1; $colonne <= 5; $colonne++)
 			{
 				echo "<td style='border:2px solid black;padding:10px;'>";
 				foreach($result as $value)

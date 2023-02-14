@@ -129,7 +129,7 @@ if(isset($_SESSION['login']))
 	if(isset($_SESSION['login']))
 	{
 	?>
-		<input name="Ajouter" type="submit" class="btn btn-success" value="Réserver"  /></div>
+		<input name="Ajouter" type="submit" class="btn btn-success" value="Réserver"  /></div> 
 	<?php
 	}
 	?>
